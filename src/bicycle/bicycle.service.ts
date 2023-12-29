@@ -17,9 +17,8 @@ export class BicycleService {
     const total = data.length;
     const available = data.filter((e) => e.status === 'available').length;
     const booked = total - available;
-    const avCost = Math.round(
-      data.reduce((acc, e) => acc + e.price, 0) / total,
-    );
+    const avCost =
+      Math.round(data.reduce((acc, e) => acc + e.price, 0) / total) || 0;
     return { status: 200, data, stat: { total, available, booked, avCost } };
   }
 
